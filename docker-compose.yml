@@ -10,5 +10,15 @@ services:
     environment:
       - PHP_DISPLAY_ERRORS=1
     restart: unless-stopped
+  k6:
+    build: ./load
+    profiles: ["loadtest"]
+    depends_on:
+      - web
+    environment:
+      - BASE_URL=http://web
+    volumes:
+      - ./load:/scripts:ro
+
 volumes:
   lab_data:

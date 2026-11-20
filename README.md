@@ -6,7 +6,8 @@ Een bewust kwetsbare oefenwebsite met vier pagina's, gebouwd met **PHP 8.3**, **
 de website gebruiken om het ontdekken en testen van webkwetsbaarheden met **OWASP ZAP** te demonstreren.
 
 > **Veiligheidswaarschuwing:** dit project bevat opzettelijke kwetsbaarheden. Gebruik het uitsluitend in een
-> geïsoleerde, lokale testomgeving. Stel de container niet bloot aan internet of een bedrijfsnetwerk en gebruik geen echte
+> geïsoleerde, lokale testomgeving. Stel de container niet bloot aan internet of een bedrijfsnetwerk en gebruik geen
+> echte
 > accounts of persoonsgegevens.
 
 ## 1. Overzicht
@@ -183,3 +184,60 @@ Gebruik dit lab eventueel als basis voor een tweede demonstratie waarin je de kw
 - Voeg passende beveiligingsheaders, CSRF-bescherming en veilige sessie-instellingen toe.
 
 Dit project is een demonstratieomgeving, geen productiegeschikte applicatie.
+
+# Playwright tests
+
+Ik heb een Playwright-testsuite toegevoegd aan je OWASP ZAP-project.
+Wat wordt getest?
+
+* Pagina TestsHome Navigatie en pagina-inhoud
+* Zoeken Zoekfunctionaliteit en Reflected XSS
+* Contact Validatie en Stored XSS
+* Inloggen Geldige login, ongeldige login en SQL Injection
+
+## Installatie
+
+Installeer eerst Node.js. Open daarna een terminal in de projectmap. Er is een aparte map
+`playwright` waarin de modules voor playwright zitten. Om Playwright te kunnen gebruiken moet je
+ook eerst de headless browsers installeren.
+
+```bash
+cd playwright
+npm install
+npx playwright install chromium
+```
+
+## Tests uitvoeren
+
+```bash
+npm test
+```
+
+## Browser zichtbaar openen:
+
+```bash 
+npm run test:headed
+```
+
+## Interactieve testomgeving:
+
+```bash 
+npm run test:ui
+```
+
+## Testresultaten bekijken
+
+```bash 
+npm run report
+```
+
+# K6 Load tests
+
+Load tests zijn gemaakt met AI voor K6. K6 is een product van Grafana en we gebruiken
+een [Docker image](https://hub.docker.com/r/grafana/k6) om de tests te runnen.
+
+Om de load tests te runnen vanaf de command line
+
+```bash 
+docker compose --profile loadtest run --rm k6
+```
