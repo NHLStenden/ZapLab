@@ -1,0 +1,14 @@
+services:
+  web:
+    container_name: zaplab
+    build: ./webserver
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+      - lab_data:/var/lib/lab
+    environment:
+      - PHP_DISPLAY_ERRORS=1
+    restart: unless-stopped
+volumes:
+  lab_data:

@@ -1,0 +1,2 @@
+<?php require_once __DIR__ . '/common.php'; ?>
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ZAP oefenlab</title><link rel="stylesheet" href="/style.css"></head><body><main class="wrap"><header><h1>OWASP ZAP oefenlab</h1><p class="muted">Een lokale, bewust kwetsbare PHP-demo</p><nav><a href="/index.php">Home</a><a href="/search.php">Zoeken</a><a href="/contact.php">Contact</a><a href="/login.php">Inloggen</a></nav></header>
